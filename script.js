@@ -1,2 +1,3 @@
 var xlxs=require("xlsx");
-xlxs.readFile("")
+var wb=xlxs.readFile("Dataset.xlsx");
+console.log(wb.SheetNames);
