@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/garima2910/IBM-project/issues"
   },
-  "homepage": "https://github.com/garima2910/IBM-project#readme"
+  "homepage": "https://github.com/garima2910/IBM-project#readme",
+  "dependencies": {
+    "xlsx": "^0.16.1"
+  }
 }
