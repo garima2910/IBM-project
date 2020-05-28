@@ -1,3 +1,4 @@
 var xlxs=require("xlsx");
 var wb=xlxs.readFile("Dataset.xlsx");
-console.log(wb.SheetNames);
+var ws=wb.Sheets("school dataset");
+console.log(ws);
