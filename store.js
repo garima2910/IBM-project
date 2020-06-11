@@ -9,7 +9,7 @@ MongoClient.connect(url, function(err, db) {
   // specifying the DB name
   var dbo = db.db("studentDB");
   // reading the JSON file
-  var myobj = require("Dataset.json")
+  var myobj = require("output.json")
 
   // inserting the JSON file into 'StudentRecord' collection in 'studentDB' database
   dbo.collection("StudentRecord").insertMany(myobj, function(err, res) {
