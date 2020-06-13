@@ -1,0 +1,28 @@
+package com.rule
+
+import com.javainuse.model.Student
+
+rule "Criteria for Excellent Student"
+	when 
+		stuObject: Student(cgpa>=9.0)
+	then
+		stuObject.setStuType("Excellent Student");
+	end
+rule "Criteria for Good Student"
+	when 
+		stuObject: Student(cgpa>=7.5 && cgpa<9.0)
+	then
+		stuObject.setStuType("Good Student");
+	end
+rule "Criteria for Average Student"
+	when 
+		stuObject: Student(cgpa>=5.0 && cgpa<7.5)
+	then
+		stuObject.setStuType("Average Student");
+	end
+rule "Criteria for Bad Student"
+	when 
+		stuObject: Student(cgpa>=0.0 && cgpa<5.0)
+	then
+		stuObject.setStuType("Bad Student");
+	end
