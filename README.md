@@ -4,6 +4,8 @@
 This project consists of Drools rule file and supporting classes which categorizes a student based on his/her **CGPA**.
 Additional details are also added to match the Excel Data. 
 
+**More rules can be added according to the need.**
+
 >> Run the code (DroolsStudent.java) as 'Java Application' in eclipse IDE.
 
 In case of any error while executing the **DroolsStudent** class :
