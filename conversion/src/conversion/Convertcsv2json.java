@@ -1,0 +1,89 @@
+package conversion;
+
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+ 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import com.mongodb.util.JSON;
+ 
+public class Convertcsv2json {
+ 
+    public static <object> void main(String[] args) throws Exception {
+        File input = new File("student.csv");
+        File output = new File("output.json");
+ 
+        CsvSchema csvSchema = CsvSchema.builder().setUseHeader(true).build();
+        CsvMapper csvMapper = new CsvMapper();
+ 
+        // Read data from CSV file
+        List<object> readAll = (List<object>) csvMapper.readerFor(Map.class).with(csvSchema).readValues(input).readAll();
+        
+        
+        ObjectMapper mapper = new ObjectMapper();
+ 
+        // Write JSON formated data to output.json file
+        mapper.writerWithDefaultPrettyPrinter().writeValue(output, readAll);
+ 
+        // Write JSON formated data to stdout
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(readAll));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//import java.io.*;
+//import java.util.*;
+//import com.fasterxml.jackson.databind.*;
+//import com.fasterxml.jackson.dataformat.csv.*;
+//public class Convertcsv2json {
+//   public static void main(String args[]) throws Exception {
+//      File input = new File("student.csv");
+//      try {
+//         CsvSchema csv = CsvSchema.emptySchema().withHeader();
+//         CsvMapper csvMapper = new CsvMapper();
+//         MappingIterator<Map<?, ?>> mappingIterator =  csvMapper.reader().forType(Map.class).with(csv).readValues(input);
+//         List<Map<?, ?>> list = mappingIterator.readAll();
+//        System.out.println(list);
+//      } catch(Exception e) {
+//         e.printStackTrace();
+//      }
+//   }
+//}
