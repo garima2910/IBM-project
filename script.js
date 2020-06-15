@@ -1,7 +1,10 @@
-var xlxs=require("xlsx");
-var wb=xlxs.readFile("Dataset.xlsx",{cellDates:true});
-var ws=wb.Sheets["school dataset"];
-var data=xlxs.utils.sheet_to_json(ws);
+
+let csvToJson = require('convert-csv-to-json');
+ 
+let fileInputName = 'student.csv'; 
+let fileOutputName = 'output.json';
+ 
+csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
 
 
 

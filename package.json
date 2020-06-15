@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/garima2910/IBM-project#readme",
   "dependencies": {
+    "convert-csv-to-json": "0.0.15",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.18",
     "xlsx": "^0.16.1"
