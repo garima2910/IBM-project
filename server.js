@@ -53,6 +53,7 @@ let fileExtension = require('file-extension');
                 } else {
                   res.json(result);
                 }
+                
             });
  
         })
