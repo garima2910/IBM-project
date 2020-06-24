@@ -1,12 +1,3 @@
-
-//using MongoDB module
-var MongoClient = require('mongodb').MongoClient
-let csvToJson = require('convert-csv-to-json');
-function makejsonfile(fileInputName){
-    let fileOutputName = 'output.json';
-    csvToJson.generateJsonFileFromCsv(fileInputName,fileOutputName);
-}
-makejsonfile('student_data2.csv');
 var url = "mongodb://localhost:27017/studentDB";
 MongoClient.connect(url, function(err, db) {
 	if (err) throw err;
