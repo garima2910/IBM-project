@@ -2,8 +2,8 @@ let express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     multer = require('multer');
-    // xlsxtojson = require('xlsx-to-json'),
-    // xlstojson = require("xls-to-json");
+    xlsxtojson = require('xlsx-to-json'),
+    xlstojson = require("xls-to-json");
  
 let fileExtension = require('file-extension');
  
@@ -68,9 +68,55 @@ MongoClient.connect(url, function(err, db) {
       db.close();
     });
   });
-} else {
-                req.send('could not convert')
+} 
+else if(req.file.originalname.split('.')[req.file.originalname.split('.').length-1] === 'xlsx'){
+    xlsxj({
+        input: file.originalname, 
+        output: "output.json"
+      }, function(err, result) {
+        if(err) {
+          console.error(err);
+        }else {
+          console.log(result);
+        }
+      });
+    var url = "mongodb://localhost:27017/studentDB";
+            MongoClient.connect(url, function(err, db) {
+	if (err) throw err;
+	console.log("Database created!");
+	db.close();
+});
+MongoClient.connect(url, function(err, db) {
+	if (err) throw err;
+	// specifying the DB name
+	var dbo = db.db("studentDB");
+	// creating collection
+	dbo.createCollection("StudentRecord", function(err, res) {
+		if (err) throw err;
+		console.log("Collection created!");
+		db.close();
+	});
+}); 
+MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    // specifying the DB name
+    var dbo = db.db("studentDB");
+    // reading the JSON file
+    var myobj = require("./output.json")
+  
+    // inserting the JSON file into 'StudentRecord' collection in 'studentDB' database
+    dbo.collection("StudentRecord").insertMany(myobj, function(err, res) {
+      if (err) throw err;
+      console.log("Number of documents inserted: " + res.insertedCount);
+      db.close();
+    });
+  });           
+    
             }
+
+        else{
+            req.send('could not convert')
+        }
  
            //  code to convert excel data to json  format
             
