@@ -2,27 +2,45 @@ package com.rule
 
 import com.javainuse.model.Student
 
-rule "Criteria for Excellent Student"
+rule "Branch Validation"
 	when 
-		stuObject: Student(cgpa>=9.0)
+		stuObject: Student(stuObject.getBranch() != "")
 	then
-		stuObject.setStuType("Excellent Student");
+		stuObject.setBranchValidationFlag("True");
 	end
-rule "Criteria for Good Student"
+rule "Sapid Validation"
 	when 
-		stuObject: Student(cgpa>=7.5 && cgpa<9.0)
+		stuObject: Student(stuObject.getSapId() != "" && 
+						   stuObject.getSapId().matches(".*\\d.*") &&
+						   stuObject.getSapId().length() == 9)
 	then
-		stuObject.setStuType("Good Student");
+		stuObject.setSapidValidationFlag("True");
+	end	
+rule "Roll No Validation"
+	when 
+		stuObject: Student(stuObject.getRollNo() != "" &&
+						   stuObject.getRollNo().indexOf('R') == 0 &&
+						   stuObject.getRollNo().length() == 10)
+	then
+		stuObject.setRollnoValidationFlag("True");
 	end
-rule "Criteria for Average Student"
+rule "Batch Validation"
 	when 
-		stuObject: Student(cgpa>=5.0 && cgpa<7.5)
+		stuObject: Student(stuObject.getBatch() != "" && 
+						   stuObject.getBatch().matches(".*\\d.*"))
 	then
-		stuObject.setStuType("Average Student");
+		stuObject.setBatchValidationFlag("True");
 	end
-rule "Criteria for Bad Student"
+rule "Name Validation"
 	when 
-		stuObject: Student(cgpa>=0.0 && cgpa<5.0)
+		stuObject: Student(stuObject.getName() != "" && 
+						   !stuObject.getName().matches(".*\\d.*"))
 	then
-		stuObject.setStuType("Bad Student");
+		stuObject.setNameValidationFlag("True");
+	end
+rule "CGPA Validation"
+	when 
+		stuObject: Student(stuObject.getCgpa() != "")
+	then
+		stuObject.setCgpaValidationFlag("True");
 	end

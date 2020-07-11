@@ -15,12 +15,14 @@ import com.javainuse.model.Student;
 
 public class DroolsStudent {
 
-	public static void main(String[] args) throws DroolsParserException, IOException {
+	/*public static void main(String[] args) throws DroolsParserException, IOException {
 		DroolsStudent droolsTest = new DroolsStudent();
-		droolsTest.executeDrools();
-	}
+		boolean f = droolsTest.executeDrools("BAO", "R103217016", 500063397, 1, "Anchit", 8.87f);
+		System.out.println(f);
+	}*/
 
-	public void executeDrools() throws DroolsParserException, IOException {
+	public boolean executeDrools(String branch, String rollno, long sapid, 
+			int batch, String name, float cgpa) throws DroolsParserException, IOException {
 
 		PackageBuilder packageBuilder = new PackageBuilder();
 
@@ -36,23 +38,40 @@ public class DroolsStudent {
 		WorkingMemory workingMemory = ruleBase.newStatefulSession();
 
 		Student s1 = new Student();
-		s1.setName("Anchit Gupta");
-		s1.setDob("22-02-1999");
-		s1.setSapId(500063399);
-		s1.setRollNo("R103217016");
-		s1.setBranch("CSE-BAO");
-		s1.setCgpa(8.87f);
+		s1.setBranch(branch);
+		s1.setRollNo(rollno);
+		s1.setSapId(sapid);
+		s1.setBatch(batch);
+		s1.setName(name);
+		s1.setCgpa(cgpa);
+		
 		workingMemory.insert(s1);
 		workingMemory.fireAllRules();
-
+		
+		/*
 		System.out.println(":----- STUDENT DETAILS -----:");
-		System.out.println("Name     :  " + s1.getName());
-		System.out.println("D.O.B  	 :  " + s1.getDob());
+		System.out.println("Branch   :  " + s1.getBranch());
 		System.out.println("SAP ID   :  " + s1.getSapId());
 		System.out.println("Roll No  :  " + s1.getRollNo());
-		System.out.println("Branch   :  " + s1.getBranch());
+		System.out.println("Batch  	 :  " + s1.getBatch());
+		System.out.println("Name     :  " + s1.getName());
 		System.out.println("CGPA     :  " + s1.getCgpa());
-		System.out.println("The above student has been categorized as a '" + s1.getStuType() + "'");
+		System.out.println();
+		System.out.println("Branch Validation : " + s1.getBranchValidationFlag());
+		System.out.println("SAPID Validation : " + s1.getSapidValidationFlag());
+		System.out.println("Roll No Validation : " + s1.getRollnoValidationFlag());
+		System.out.println("Batch Validation : " + s1.getBatchValidationFlag());
+		System.out.println("Name Validation : " + s1.getNameValidationFlag());
+		System.out.println("CGPA Validation : " + s1.getCgpaValidationFlag());*/
+		
+		boolean final_flag = s1.getBranchValidationFlag() &&
+							 s1.getSapidValidationFlag() &&
+							 s1.getRollnoValidationFlag() &&
+							 s1.getBatchValidationFlag() &&
+							 s1.getNameValidationFlag() &&
+							 s1.getCgpaValidationFlag();
+		
+		return final_flag;
 	}
 
 }

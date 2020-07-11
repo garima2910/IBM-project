@@ -3,14 +3,19 @@ package com.javainuse.model;
 public class Student {
 
 	// input class variables
-	private String name;
-	private String dob;
+	private String branch;
 	private long sapid;
 	private String rollno;
-	private String branch;
+	private int batch;
+	private String name;
 	private float cgpa;
-	// class variable we will set according to rules defined
-	private String stuType;
+
+	private boolean branchValidationFlag;
+	private boolean sapidValidationFlag;
+	private boolean rollnoValidationFlag;
+	private boolean batchValidationFlag;
+	private boolean nameValidationFlag;
+	private boolean cgpaValidationFlag;
 
 	// methods related to Student Name
 	public String getName() {
@@ -22,17 +27,17 @@ public class Student {
 	}
 
 	// methods related to Student DOB
-	public String getDob() {
-		return dob;
+	public String getBatch() {
+		return String.valueOf(batch);
 	}
 
-	public void setDob(String dob) {
-		this.dob = dob;
+	public void setBatch(int batch) {
+		this.batch = batch;
 	}
 
 	// methods related to Student SapId
-	public long getSapId() {
-		return sapid;
+	public String getSapId() {
+		return String.valueOf(sapid);
 	}
 
 	public void setSapId(long sapid) {
@@ -58,21 +63,61 @@ public class Student {
 	}
 
 	// methods related to Student CGPA
-	public float getCgpa() {
-		return cgpa;
+	public String getCgpa() {
+		return String.valueOf(cgpa);
 	}
 
 	public void setCgpa(float cgpa) {
 		this.cgpa = cgpa;
 	}
 
-	// methods related to Student Type
-	public String getStuType() {
-		return stuType;
+	// NAME
+	public boolean getNameValidationFlag() {
+		return nameValidationFlag;
 	}
 
-	public void setStuType(String stuType) {
-		this.stuType = stuType;
+	public void setNameValidationFlag(String flag) {
+		this.nameValidationFlag = Boolean.parseBoolean(flag);
+	}
+	// BATCH
+	public boolean getBatchValidationFlag() {
+		return batchValidationFlag;
+	}
+
+	public void setBatchValidationFlag(String flag) {
+		this.batchValidationFlag = Boolean.parseBoolean(flag);
+	}
+	// SAPID
+	public boolean getSapidValidationFlag() {
+		return sapidValidationFlag;
+	}
+
+	public void setSapidValidationFlag(String flag) {
+		this.sapidValidationFlag = Boolean.parseBoolean(flag);
+	}
+	//ROLL NO
+	public boolean getRollnoValidationFlag() {
+		return rollnoValidationFlag;
+	}
+
+	public void setRollnoValidationFlag(String flag) {
+		this.rollnoValidationFlag = Boolean.parseBoolean(flag);
+	}
+	// BRANCH
+	public boolean getBranchValidationFlag() {
+		return branchValidationFlag;
+	}
+
+	public void setBranchValidationFlag(String flag) {
+		this.branchValidationFlag = Boolean.parseBoolean(flag);
+	}
+	// CGPA
+	public boolean getCgpaValidationFlag() {
+		return cgpaValidationFlag;
+	}
+
+	public void setCgpaValidationFlag(String flag) {
+		this.cgpaValidationFlag = Boolean.parseBoolean(flag);
 	}
 
 }
