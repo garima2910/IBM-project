@@ -1,18 +1,11 @@
 package com.javainuse.main;
 
-//Java program to read JSON from a file 
-
-import java.io.FileReader;
-import java.util.Iterator;
-import java.util.Map;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import com.javainuse.main.DroolsStudent.*;
+import java.io.IOException;
 
 import org.drools.compiler.compiler.DroolsParserException;
-import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.simple.JSONValue;
 
 public class Validation {
 	/*public static void main(String[] args) throws Exception {
@@ -35,12 +28,12 @@ public class Validation {
 		ob.validateJSONdata(data);
 	}*/
 
-	public boolean validateJSONdata(String data)throws DroolsParserException, IOException {
+	public boolean validateJSONdata(String data )throws DroolsParserException, IOException {
 		
 		Object object = JSONValue.parse(data);
 		
 		JSONObject jsonObject1 = (JSONObject) object;
-		JSONArray fields= (JSONArray) jsonObject1.get("StudentRecord");
+		JSONArray fields= (JSONArray) jsonObject1.get(data);
 		
 		boolean f = true;
 		
