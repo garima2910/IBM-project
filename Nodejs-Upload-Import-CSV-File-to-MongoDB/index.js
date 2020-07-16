@@ -3,10 +3,12 @@ const multer = require('multer');
 const express = require('express');
 const excelToJson = require('convert-excel-to-json');
 let MongoClient = require('mongodb').MongoClient;
-var ella = require('ella');
 let url = "mongodb://localhost:27017/";
 const csv=require('csvtojson')
- 
+
+
+
+
 const app = express();
  
 global.__basedir = __dirname;
@@ -92,15 +94,8 @@ function importCsvData2MongoDB(filePath){
         .fromFile(filePath)
         .then((jsonObj)=>{
             console.log(jsonObj);
-            var myJSON = JSON.stringify(jsonObj);
-            
-                ella.start(function(o){
-                var s = o.new('java.lang.StringBuffer'); //instantiate StringBuffer. 
-                s.append('hello');  // append hello
-                s.append('world');  // hello world 
-                s.reverse();        // dlrow ollew
-                console.log('->',s); // [function body]
-            })
+            var myJSON= JSON.stringify(jsonObj);
+
             
 
             // Insert Json-Object to MongoDB
