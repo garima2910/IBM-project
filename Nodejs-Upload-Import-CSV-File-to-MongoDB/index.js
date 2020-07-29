@@ -6,6 +6,7 @@ let MongoClient = require('mongodb').MongoClient;
 let url = "mongodb://localhost:27017/";
 const csv=require('csvtojson')
 const children = require('../drools-hello-world/src/main/java/com/javainuse/main/validation.java');
+var java = require("java");
 
 
 
@@ -95,8 +96,10 @@ function importCsvData2MongoDB(filePath){
         .then((jsonObj)=>{
             console.log(jsonObj);
             var myJSON= JSON.stringify(jsonObj);
+            var obj=java.callStaticMethod('validation.java');
+            console.log(obj);
 
-            
+    
 
             // Insert Json-Object to MongoDB
             MongoClient.connect(url, { useNewUrlParser: true }, (err, db) => {
