@@ -8,27 +8,14 @@ import org.json.JSONObject;
 import org.json.simple.JSONValue;
 
 public class Validation {
-	/*public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
-		String data = "{"
-						+ "\"StudentRecord\": ["
-						+ "{"
-						+ "\"Branch\": \"BAO\"," + "\"Roll No\": \"R103217016\","
-						+ "\"Sapid\": 500063399," + "\"Batch\": 1,"
-						+ "\"Name\": \"Anchit\"," + "\"Cgpa\": 8.87"
-						+ "}," 
-						+ "{" 
-						+ "\"Branch\": \"BAO\"," + "\"Roll No\": \"R103217018\","
-						+ "\"Sapid\": 500061988," + "\"Batch\": 1,"
-						+ "\"Name\": \"Anmol\"," + "\"Cgpa\": 7.05"
-						+ "}"
-						+ "]"
-					+ "}";
-		Validation ob = new Validation();
-		ob.validateJSONdata(data);
-	}*/
+		File file_ = 
+		new File("C:\\Users\\Garima\\Documents\\GitHub\\IBM-project\\drools-hello-world\\file.json"); 
+		Scanner sc = new Scanner(file_); 
+		String[] data=sc.nextLine().split("{");
 
-	public boolean validateJSONdata(String data )throws DroolsParserException, IOException {
+	public boolean validateJSONdata(String[] data  )throws DroolsParserException, IOException {
 		
 		Object object = JSONValue.parse(data);
 		
